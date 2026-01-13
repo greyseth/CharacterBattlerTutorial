@@ -1,13 +1,23 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 public class Testing {
     public static void main(String[] args) {
-        int result = 0;
-        result = addition(4, 5);
+//        int[4] myInteger = {16, 25, 75, 13, 7};
+//        System.out.println(myInteger[4]);
 
-        System.out.println(result);
-    }
 
-    static int addition(int a, int b) {
-        System.out.println("Adding "+a+" with "+b);
-        return a+b;
+        ArrayList myInteger = new ArrayList<Integer>();
+
+        myInteger.add(16);
+        myInteger.add(25);
+        myInteger.add(75);
+        myInteger.add(13);
+        myInteger.add(7);
+
+        for (int i = 0; i < myInteger.size(); i++) {
+            System.out.println(myInteger.get(i));
+        }
     }
 }
