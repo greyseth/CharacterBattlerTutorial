@@ -1,3 +1,5 @@
+import model.Character;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -8,7 +10,7 @@ public class Testing {
 //        System.out.println(myInteger[4]);
 
 
-        ArrayList myInteger = new ArrayList<Integer>();
+        ArrayList<Integer> myInteger = new ArrayList<Integer>();
 
         myInteger.add(16);
         myInteger.add(25);
@@ -16,8 +18,8 @@ public class Testing {
         myInteger.add(13);
         myInteger.add(7);
 
-        for (int i = 0; i < myInteger.size(); i++) {
-            System.out.println(myInteger.get(i));
-        }
+        int foundNumber16 = myInteger.stream().filter(p -> p == 16).toList().getFirst();
+
+        System.out.println(foundNumber16);
     }
 }
