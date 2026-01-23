@@ -1,15 +1,10 @@
-import com.sun.security.jgss.GSSUtil;
-import model.Character;
-import model.CharacterManager;
 import model.Page;
 import model.PageManager;
 import model.pages.PageCharacterList;
 import model.pages.PageMain;
 import model.pages.PageRegister;
 
-import java.lang.reflect.AnnotatedArrayType;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import static util.Input.inputNumber;
 

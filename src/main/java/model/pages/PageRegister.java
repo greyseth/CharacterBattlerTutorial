@@ -23,14 +23,41 @@ public class PageRegister extends Page {
         Scanner scanner = new Scanner(System.in);
         String nameInput = scanner.nextLine();
 
-        System.out.println("Enter agi:");
-        int agiInput = inputNumber(12);
+        System.out.println("Set stats for your character (12 stat points max)");
 
-        System.out.println("Enter def:");
-        int defInput = inputNumber(12);
+        int points = 12;
+        int agiInput = 0;
+        int defInput = 0;
+        int strInput = 0;
 
-        System.out.println("Enter str:");
-        int strInput = inputNumber(12);
+        System.out.println("Enter str: (points remaining: "+points+")");
+        strInput = inputNumber(10);
+
+        points -= strInput;
+
+        boolean defInputValid = false;
+        while(!defInputValid) {
+            System.out.println("Enter def: (points remaining: "+points+")");
+            defInput = inputNumber(10);
+
+            if (defInput > points) System.out.println("Insufficient points! (Points remaining: "+points+")");
+            else {
+                defInputValid = true;
+                points -= defInput;
+            }
+        }
+
+        boolean agiInputValid = false;
+        while(!agiInputValid) {
+            System.out.println("Enter agi: (points remaining: "+points+")");
+            agiInput = inputNumber(10);
+
+            if (agiInput > points) System.out.println("Insufficient points! (Points remaining: "+points+")");
+            else {
+                agiInputValid = true;
+                points -= agiInput;
+            }
+        }
 
         Character newCharacter = new Character(nameInput, agiInput, defInput, strInput);
         System.out.println("New character created! - "+newCharacter.name);
