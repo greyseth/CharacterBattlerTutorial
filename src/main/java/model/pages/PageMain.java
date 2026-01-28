@@ -15,7 +15,7 @@ public class PageMain extends Page {
         if (input == 1) {
             PageManager.currentPage = "character_list";
         }else if (input == 2) {
-            System.out.println("Battling!!!!!!");
+            PageManager.currentPage = "battle";
         }else {
             PageManager.applicationRunning = false;
         }
