@@ -6,7 +6,6 @@ import util.Input;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class PageBattle extends Page {
     public PageBattle(String name, String initialText, ArrayList<String> menus) {
@@ -71,21 +70,47 @@ public class PageBattle extends Page {
             int moveInput = 0;
 
             if (playerTurn) {
+                if (player.guarding) {
+                    player.guarding = false;
+                    player.def = player.prevDef;
+                }
+
                 System.out.println("--Your Turn!--");
+                System.out.printf("[HP: %1$s| MP: %2$s]\n", player.hp, player.mp);
                 for (int i = 0; i < CharacterManager.moves.size(); i++) {
                     System.out.println((i+1)+" - "+CharacterManager.moves.get(i).name + " | "+CharacterManager.moves.get(i).mpCost+" MP");
                 }
 
                 moveInput = Input.inputNumber(CharacterManager.moves.size());
             }else {
+                if (enemy.guarding) {
+                    enemy.guarding = false;
+                    enemy.def = enemy.prevDef;
+                }
+
                 System.out.println("--"+enemy.name+"'s Turn!--");
+                System.out.printf("[HP: %1$s| MP: %2$s]\n", enemy.hp, enemy.mp);
 
                 moveInput = random.nextInt(1, CharacterManager.moves.size()+1);
             }
 
             Move selectedMove = CharacterManager.moves.get(moveInput-1);
             System.out.println((playerTurn ? player : enemy).name+" performs "+selectedMove.name);
-            selectedMove.onAction();
+
+            selectedMove.onAction(playerTurn ? player : enemy, playerTurn ? enemy : player);
+            selectedMove.afterAction(playerTurn ? player : enemy, playerTurn ? enemy : player);
+
+            if (enemy.hp <= 0) {
+                isBattling = false;
+                System.out.println(enemy.name+" is dead!");
+
+                PageManager.currentPage = "main_menu";
+            }else if (player.hp <= 0) {
+                isBattling = false;
+                System.out.println("You died!");
+
+                PageManager.currentPage = "main_menu";
+            }
 
             playerTurn = !playerTurn;
         }

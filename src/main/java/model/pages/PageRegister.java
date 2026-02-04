@@ -3,6 +3,7 @@ package model.pages;
 import model.Page;
 import model.Character;
 import model.PageManager;
+import util.SaveManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -64,6 +65,7 @@ public class PageRegister extends Page {
 
         characters.add(newCharacter);
 
+        SaveManager.saveData();
         PageManager.currentPage = "character_list";
     }
 }

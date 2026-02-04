@@ -5,6 +5,7 @@ import model.pages.PageBattle;
 import model.pages.PageCharacterList;
 import model.pages.PageMain;
 import model.pages.PageRegister;
+import util.SaveManager;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import static util.Input.inputNumber;
 
 public class App {
     public static void main(String[] args) {
+        SaveManager.loadData();
         CharacterManager.initializeMoves();
 
         ArrayList<String> mainMenuMenus = new ArrayList<>();

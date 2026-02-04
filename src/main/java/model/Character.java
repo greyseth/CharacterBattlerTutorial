@@ -8,6 +8,9 @@ public class Character {
     public int def;
     public int str;
 
+    public boolean guarding = false;
+    public int prevDef = 0;
+
     public Character(String name, int agi, int def, int str) {
         this.name = name;
         this.agi = agi;

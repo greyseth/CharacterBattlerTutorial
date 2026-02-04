@@ -9,7 +9,16 @@ public class Move {
         this.mpCost = mpCost;
     }
 
-    public void onAction() {
+    public void onAction(Character player, Character target) {
+        if (player.mp < mpCost) {
+            System.out.println("NOT ENOUGH MP!");
+            return;
+        }
+
+        player.mp -= mpCost;
+    }
+
+    public void afterAction(Character player, Character target) {
 
     }
 }

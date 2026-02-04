@@ -1,6 +1,7 @@
 package model;
 
 import model.moves.Guard;
+import model.moves.Heal;
 import model.moves.HeavyAttack;
 import model.moves.LightAttack;
 
@@ -14,5 +15,6 @@ public class CharacterManager {
         moves.add(new LightAttack("Light Attack", 0));
         moves.add(new HeavyAttack("Heavy Attack", 5));
         moves.add(new Guard("Guard", 7));
+        moves.add(new Heal("Heal", 10));
     }
 }
